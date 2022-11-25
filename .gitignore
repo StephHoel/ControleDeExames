@@ -1,0 +1,5 @@
+# O que não vai ser carregado no GitHub:
+*/node_modules
+*/.env
+*/.next
+*/next-env.d.ts
