@@ -10,43 +10,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    String @id @default(cuid())
-  user  String @unique
-  pass  String
-  name  String
-  email String
-  // Result Result[]
-  // Log    Log[]
+model user {
+  id     String   @id @default(cuid())
+  user   String   @unique
+  pass   String
+  name   String
+  email  String
+  Result result[]
 
   @@unique([user, pass])
 }
 
-// model Exam {
-//   id     String   @id @default(cuid())
-//   name   String   @unique
-//   type   String
-//   Result Result[]
-// }
+model exam {
+  id     String   @id @default(cuid())
+  name   String   @unique //nome do exame
+  type   String //tipo do exame: sangue, urina, fezes, ginecologico
+  Result result[]
+}
 
-// model Result {
-//   id          String @id @default(cuid())
-//   dateColeted String
-//   result      String
+model result {
+  id          String @id @default(cuid())
+  dateColeted String // data da coleta do exame
+  result      String // valor do resultado do exame
+  examId      String // id do exame
+  userId      String // id do usuario
 
-//   examId String
-//   userId String
+  createdAt DateTime @default(now())
 
-//   exam Exam @relation(fields: [examId], references: [id])
-//   user User @relation(fields: [userId], references: [id])
-// }
-
-// model Log {
-//   id   String @id @default(cuid())
-//   info String
-//   page String
-
-//   userId String
-
-//   user User @relation(fields: [userId], references: [id])
-// }
+  exam exam @relation(fields: [examId], references: [id])
+  user user @relation(fields: [userId], references: [id])
+}
