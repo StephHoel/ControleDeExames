@@ -1,0 +1,59 @@
+.page {
+  padding: 0px 2rem /* 32px */;
+}
+
+.main {
+  min-height: 100vh;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem /* 32px */ 0 4rem /* 64px */ 0;
+}
+
+.form {
+  margin-top: 2.5rem /* 40px */;
+  display: flex;
+  gap: 0.5rem /* 8px */;
+  flex-direction: column;
+  width: 400px;
+  justify-content: center;
+}
+
+.input {
+  --tw-opacity: 1;
+
+  flex: 1 1 0%;
+  border-radius: 0.25rem /* 4px */;
+  padding: 1rem /* 16px */ 1.5rem /* 24px */;
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+
+  background-color: rgb(32 32 36 / var(--tw-opacity));
+  border-color: rgb(50 50 56 / var(--tw-opacity));
+  color: rgb(225 225 230 / var(--tw-opacity));
+}
+
+
+
+.button {
+  --tw-opacity: 1;
+
+  border-radius: 0.25rem /* 4px */;
+  margin-top: 1rem /* 16px */;
+  margin-bottom: 1rem /* 16px */;
+  padding: 1rem /* 16px */ 1.5rem /* 24px */;
+
+  font-weight: 700;
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+  text-transform: uppercase;
+
+  background-color: rgb(107 114 128 / var(--tw-opacity));
+  color: rgb(18 18 20 / var(--tw-opacity));
+}
+.button:hover {
+  --tw-opacity: 1;
+
+  background-color: rgb(55 65 81 / var(--tw-opacity));
+}
