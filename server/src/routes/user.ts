@@ -45,8 +45,13 @@ export async function userRoutes(fastify: FastifyInstance) {
          },
       })
 
-      if (userFind?.user == user && userFind?.pass == pass) {
-         return reply.status(201).send({ message: 'User logged successfully' })
+      if (userFind?.user == user
+         && userFind?.pass == pass
+      ) {
+         return reply.status(201).send({
+            message: 'User logged successfully',
+            userId: userFind.id
+         })
 
       } else {
          return reply.status(401).send({ message: 'User or Pass incorrect' })
