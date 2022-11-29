@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
 
+import styles from "../styles/style.module.css";
+
 interface Props {
    children?: ReactNode
 }
@@ -7,7 +9,7 @@ interface Props {
 export default function ButtonSubmit({ children }: Props) {
    return (
       <button
-         className="bg-gray-500 px-6 py-4 rounded text-gray-900 font-bold text-sm uppercase my-4 hover:bg-gray-700"
+         className={styles.button}
          type="submit"
       >
          {children}

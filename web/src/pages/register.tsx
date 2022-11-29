@@ -1,9 +1,12 @@
-import Head from 'next/head'
+import styles from '../styles/style.module.css'
 
 import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { api } from '../lib/axios'
 
+import MD5 from 'crypto-js/MD5';
+
+import Page from '../components/Page';
 import Main from '../components/Main';
 import Input from '../components/Input'
 import ButtonSubmit from '../components/Button'
@@ -22,17 +25,12 @@ export default function Register() {
       try {
          const response = await api.post('/register', {
             user,
-            pass,
+            pass: MD5(pass).toString(),
             name,
             email,
          });
 
          const status = response.data.message
-
-         setUser('')
-         setPass('')
-         setName('')
-         setEmail('')
 
          if (status == 'User registered successfully') {
             alert('Usuário cadastrado com sucesso!\nFaça o login para acessar sua conta!')
@@ -47,17 +45,11 @@ export default function Register() {
    }
 
    return (
-      <div className="py-0 px-8">
-         <Head>
-            <title>Cadastro | ConstrolS</title>
-            <link rel="icon" href="/favicon.ico" />
-         </Head>
-
-         <Main>
-
+      <Page>
+         <Main title="Cadastro">
             Cadastro de Usuário
 
-            <form onSubmit={register} className="mt-10 flex gap-2 flex-col w-[400px] justify-center">
+            <form onSubmit={register} className={styles.form}>
                <Input
                   type="text"
                   placeholder="Nome"
@@ -88,6 +80,6 @@ export default function Register() {
             </form>
 
          </Main>
-      </div>
+      </Page>
    )
 }

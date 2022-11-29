@@ -1,24 +1,21 @@
-import Head from 'next/head'
-
 import { useRouter } from 'next/router'
 
+import { VerifySession } from '../../components/CookieSession'
+
+import Page from '../../components/Page'
 import Header from '../../components/Header'
 import Main from '../../components/Main'
-import Footer from '../../components/Footer'
 
 export default function Home() {
+   VerifySession()
+
    const router = useRouter()
 
    return (
-      <div className="py-0 px-8">
-         <Head>
-            <title>Home | ConstrolS</title>
-            <link rel="icon" href="/favicon.ico" />
-         </Head>
-
+      <Page>
          <Header col1='' link1='/' />
 
-         <Main>
+         <Main title="Home">
 
             <p className='text-6xl pb-12'>
                Conteúdo da Home - Logado
@@ -27,7 +24,8 @@ export default function Home() {
             <p>
                <a
                   onClick={() => { router.push('/user/analise') }}
-                  className="cursor-pointer">
+                  className="cursor-pointer"
+               >
                   Analisar Resultados
                </a>
             </p>
@@ -35,7 +33,8 @@ export default function Home() {
             <p>
                <a
                   onClick={() => { router.push('/new/result') }}
-                  className="cursor-pointer">
+                  className="cursor-pointer"
+               >
                   Inserir Novos Exames
                </a>
             </p>
@@ -43,7 +42,8 @@ export default function Home() {
             <p>
                <a
                   onClick={() => { router.push('/new/exam') }}
-                  className="cursor-pointer">
+                  className="cursor-pointer"
+               >
                   Pedir para inserir novos exames
                </a>
             </p>
@@ -51,8 +51,6 @@ export default function Home() {
 
          </Main>
 
-         <Footer />
-
-      </div>
+      </Page>
    )
 }
