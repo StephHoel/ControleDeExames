@@ -10,8 +10,11 @@ import Page from '../components/Page';
 import Main from '../components/Main';
 import Input from '../components/Input'
 import ButtonSubmit from '../components/Button'
+import { VerifyNotSession } from '../components/CookieSession';
 
 export default function Register() {
+   VerifyNotSession()
+   
    const [user, setUser] = useState('')
    const [pass, setPass] = useState('')
 
@@ -45,7 +48,7 @@ export default function Register() {
    }
 
    return (
-      <Page>
+      <Page col1={''} link1={''}>
          <Main title="Cadastro">
             Cadastro de Usuário
 

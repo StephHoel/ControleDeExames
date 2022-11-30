@@ -4,7 +4,7 @@ import { api } from '../lib/axios'
 
 import MD5 from 'crypto-js/MD5';
 
-import { OpenUserSession } from '../components/CookieSession';
+import { OpenUserSession, GetUserIdSession, VerifyNotSession } from '../components/CookieSession';
 
 import styles from "../styles/style.module.css";
 
@@ -13,6 +13,8 @@ import Input from '../components/Input';
 import ButtonSubmit from '../components/Button';
 
 export default function Index() {
+  VerifyNotSession()
+  
   const [user, setUser] = useState('')
   const [pass, setPass] = useState('')
 

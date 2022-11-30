@@ -11,8 +11,7 @@ export default function Analise() {
    const router = useRouter()
 
    return (
-      <Page>
-         <Header col1={'Voltar'} link1={'/user/home'} />
+      <Page col1={'Voltar'} link1={'/user/home'} >
 
          <Main title="Analise">
             Analisar

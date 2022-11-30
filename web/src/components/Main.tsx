@@ -1,19 +1,13 @@
 import Head from "next/head";
-import React, { ReactNode } from "react";
 import Footer from "./Footer";
-import Page from "./Page";
 
 import styles from "../styles/style.module.css";
 
-interface Props {
-   children?: ReactNode
-   title: String
-}
+import { MainProps } from "../lib/Props";
 
-export default function Main({ children, title }: Props) {
+export default function Main({ children, title }: MainProps) {
    return (
-      <Page>
-
+      <>
          <Head>
             <title>{title} | ControlS</title>
             <link rel="icon" href="/favicon.ico" />
@@ -24,7 +18,6 @@ export default function Main({ children, title }: Props) {
          </main>
 
          <Footer />
-      </Page>
-
+      </>
    )
 }

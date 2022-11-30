@@ -48,6 +48,18 @@ export async function VerifySession() {
    }
 }
 
+export async function VerifyNotSession() {
+   const router = useRouter()
+   
+   if (GetUserIdSession()) { // se tiver logado
+      // redirecionar para pagina principal do usuario
+      useEffect(() => {
+         router.push("/user/home")
+      },[])
+   }
+   // se nao estiver logado, nao faz nada
+}
+
 export function RemoveUserSession() {
    // apaga o cookie
    Cookies.remove('user')

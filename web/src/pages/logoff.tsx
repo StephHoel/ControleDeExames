@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router';
 
-import { RemoveUserSession } from '../components/CookieSession';
+import { RemoveUserSession, VerifySession } from '../components/CookieSession';
 
 import Main from '../components/Main';
 
 export default function Logoff() {
+   VerifySession()
+   
    const router = useRouter()
 
    RemoveUserSession()

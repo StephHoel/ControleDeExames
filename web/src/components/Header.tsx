@@ -1,13 +1,8 @@
 import { useRouter } from "next/router";
-import React, { ReactNode } from "react";
 
-interface Props {
-   children?: ReactNode
-   col1: string;
-   link1: string;
-}
+import { HeaderProps } from "../lib/Props";
 
-export default function Header({ col1, link1 }: Props) {
+export default function Header({ col1, link1 }: HeaderProps) {
    const router = useRouter()
 
    return (

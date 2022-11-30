@@ -1,12 +1,8 @@
-import React, { ReactNode } from "react";
+import { ChildrenProps } from "../lib/Props";
 
 import styles from "../styles/style.module.css";
 
-interface Props {
-   children?: ReactNode
-}
-
-export default function ButtonSubmit({ children }: Props) {
+export default function ButtonSubmit({ children }: ChildrenProps) {
    return (
       <button
          className={styles.button}

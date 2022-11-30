@@ -86,9 +86,7 @@ export default function Result() {
 
    return (
 
-      <Page>
-
-         <Header col1='Voltar' link1='/user/home' />
+      <Page col1='Voltar' link1='/user/home'>
 
          <Main title="Results">
             Cadastro de Resultados

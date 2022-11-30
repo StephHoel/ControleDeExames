@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { VerifySession } from '../../components/CookieSession'
 
 import Page from '../../components/Page'
-import Header from '../../components/Header'
 import Main from '../../components/Main'
 
 export default function Home() {
@@ -12,8 +11,7 @@ export default function Home() {
    const router = useRouter()
 
    return (
-      <Page>
-         <Header col1='' link1='/' />
+      <Page col1='' link1='/'>
 
          <Main title="Home">
 
