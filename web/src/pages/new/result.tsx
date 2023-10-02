@@ -7,14 +7,14 @@ import styles from "../../styles/style.module.css";
 
 import { GetUserIdSession, VerifySession } from '../../components/CookieSession';
 
-import Page from '../../components/Page'
-import Header from '../../components/Header'
-import Main from '../../components/Main'
+import Page from '../../components/Page';
 import Input from '../../components/Input'
 import ButtonSubmit from '../../components/Button'
 
 interface Exame {
-   id?: string, name?: string, type?: string
+   id?: string;
+   name?: string;
+   type?: string;
 }
 
 export default function Result() {
@@ -85,50 +85,46 @@ export default function Result() {
 
 
    return (
+      <Page col1='Voltar' link1='/user/home' title="Results">
 
-      <Page col1='Voltar' link1='/user/home'>
+         Cadastro de Resultados
 
-         <Main title="Results">
-            Cadastro de Resultados
+         <form onSubmit={addResult} className={styles.form}>
 
-            <form onSubmit={addResult} className={styles.form}>
+            <Input
+               type={'date'}
+               onChange={event => setDate(event.target.value)}
+               value={date}
+            />
 
-               <Input
-                  type={'date'}
-                  onChange={event => setDate(event.target.value)}
-                  value={date}
-               />
+            <Input
+               list="exam"
+               name="examId"
+               id="examId"
+               placeholder="Escolha o Exame"
+               type='text'
+               onChange={event => setExam(event.target.value)}
+               value={exam}
+            />
+            <datalist id="exam">
+               {
+                  exames.map((item: Exame) => (
+                     <option key={item.id}>{item.name} ({item.type})</option>
+                  ))
+               }
+            </datalist>
 
-               <Input
-                  list="exam"
-                  name="examId"
-                  id="examId"
-                  placeholder="Escolha o Exame"
-                  type='text'
-                  onChange={event => setExam(event.target.value)}
-                  value={exam}
-               />
-               <datalist id="exam">
-                  {
-                     exames.map((item: Exame) => (
-                        <option key={item.id}>{item.name} ({item.type})</option>
-                     ))
-                  }
-               </datalist>
+            <Input
+               type={'number'}
+               placeholder='Somente número do Resultado'
+               onChange={event => setResult(event.target.value)}
+               value={result}
+            />
 
-               <Input
-                  type={'number'}
-                  placeholder='Somente número do Resultado'
-                  onChange={event => setResult(event.target.value)}
-                  value={result}
-               />
-
-               <ButtonSubmit>
-                  Enviar
-               </ButtonSubmit>
-            </form>
-
-         </Main>
+            <ButtonSubmit>
+               Enviar
+            </ButtonSubmit>
+         </form>
 
       </Page>
    )

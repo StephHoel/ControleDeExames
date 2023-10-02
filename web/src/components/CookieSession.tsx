@@ -13,9 +13,9 @@ function DateFutureInMinutes(minutes: number) {
 }
 
 function SetUserSession(id: string) {
-   // define a sessao com duracao de 20 minutos
+   // define a sessao com duracao de 60 minutos
    Cookies.set('user', id, {
-      expires: new Date(DateFutureInMinutes(20)),
+      expires: new Date(DateFutureInMinutes(60)),
       sameSite: 'strict'
    })
 }
@@ -36,12 +36,12 @@ export function GetUserIdSession() {
 
 export async function VerifySession() {
    const router = useRouter()
-   
+
    if (!GetUserIdSession()) { // se nao tiver logado
       // redirecionar para pagina principal
       useEffect(() => {
          router.push("/")
-      },[])
+      }, [])
    }
    else { // se tiver logado, extender
       SetUserSession(GetUserIdSession())
@@ -50,14 +50,14 @@ export async function VerifySession() {
 
 export async function VerifyNotSession() {
    const router = useRouter()
-   
-   if (GetUserIdSession()) { // se tiver logado
-      // redirecionar para pagina principal do usuario
-      useEffect(() => {
+
+   useEffect(() => {
+      if (GetUserIdSession()) { // se tiver logado
+         // redirecionar para pagina principal do usuario
          router.push("/user/home")
-      },[])
-   }
-   // se nao estiver logado, nao faz nada
+      }
+      // se nao estiver logado, nao faz nada
+   }, [])
 }
 
 export function RemoveUserSession() {

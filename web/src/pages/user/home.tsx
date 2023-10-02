@@ -1,54 +1,63 @@
 import { useRouter } from 'next/router'
+import { ListPlus, MagnifyingGlass, Plus } from 'phosphor-react'
+
+import styles from "../../styles/style.module.css";
 
 import { VerifySession } from '../../components/CookieSession'
 
 import Page from '../../components/Page'
-import Main from '../../components/Main'
 
 export default function Home() {
-   VerifySession()
-
    const router = useRouter()
 
+   VerifySession()
+
    return (
-      <Page col1='' link1='/'>
+      <Page title="Home">
 
-         <Main title="Home">
+         <div className="flex w-full ">
+            <div className="w-[21%] p-5 text-left text-lg">
+               <p className="text-center mb-4 text-3xl">
+                  Menu
+               </p>
 
-            <p className='text-6xl pb-12'>
-               Conteúdo da Home - Logado
-            </p>
-
-            <p>
-               <a
+               <p
                   onClick={() => { router.push('/user/analise') }}
-                  className="cursor-pointer"
+                  className={styles.menu}
                >
+                  <MagnifyingGlass />
                   Analisar Resultados
-               </a>
-            </p>
+               </p>
 
-            <p>
-               <a
+               <p
                   onClick={() => { router.push('/new/result') }}
-                  className="cursor-pointer"
+                  className={styles.menu}
                >
-                  Inserir Novos Exames
-               </a>
-            </p>
+                  <Plus />
+                  Novo Resultado
+               </p>
 
-            <p>
-               <a
+               <div className="w-full h-px bg-gray-300 mt-8 mb-4" />
+
+               <p
                   onClick={() => { router.push('/new/exam') }}
-                  className="cursor-pointer"
+                  className={styles.menu}
                >
+                  <ListPlus size={40} />
                   Pedir para inserir novos exames
-               </a>
-            </p>
-
-
-         </Main>
-
+               </p>
+            </div>
+            <div className="w-px bg-gray-300" />
+            <div className="w-[70%] p-5 ">
+               <p className='text-3xl pb-12 whitespace-pre-line'>
+                  Olá{router.query.name ? ', ' + router.query.name : ''}!
+                  {'\n\n'}
+                  Seu último exame foi feito dia [xx/xx/xxx]
+                  {'\n\n'}
+                  .
+               </p>
+            </div>
+         </div>
       </Page>
    )
 }

@@ -2,11 +2,11 @@ import { useRouter } from 'next/router';
 
 import { RemoveUserSession, VerifySession } from '../components/CookieSession';
 
-import Main from '../components/Main';
+import Page from '../components/Page';
 
 export default function Logoff() {
    VerifySession()
-   
+
    const router = useRouter()
 
    RemoveUserSession()
@@ -14,8 +14,8 @@ export default function Logoff() {
    router.push('/')
 
    return (
-      <Main title="Logoff">
-         Saindo...
-      </Main>
+      <Page title="Logoff">
+            Saindo...
+      </Page>
    )
 }

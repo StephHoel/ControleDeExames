@@ -1,20 +1,19 @@
 import styles from '../styles/style.module.css'
 
+import MD5 from 'crypto-js/MD5';
+
 import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { api } from '../lib/axios'
-
-import MD5 from 'crypto-js/MD5';
+import { VerifyNotSession } from '../components/CookieSession';
 
 import Page from '../components/Page';
-import Main from '../components/Main';
 import Input from '../components/Input'
 import ButtonSubmit from '../components/Button'
-import { VerifyNotSession } from '../components/CookieSession';
 
 export default function Register() {
    VerifyNotSession()
-   
+
    const [user, setUser] = useState('')
    const [pass, setPass] = useState('')
 
@@ -48,41 +47,39 @@ export default function Register() {
    }
 
    return (
-      <Page col1={''} link1={''}>
-         <Main title="Cadastro">
-            Cadastro de Usuário
+      <Page title="Cadastro">
+         Cadastro de Usuário
 
-            <form onSubmit={register} className={styles.form}>
-               <Input
-                  type="text"
-                  placeholder="Nome"
-                  onChange={event => setName(event.target.value)}
-                  value={name}
-               />
-               <Input
-                  type="email"
-                  placeholder="E-mail"
-                  onChange={event => setEmail(event.target.value)}
-                  value={email}
-               />
-               <Input
-                  type="text"
-                  placeholder="Usuário"
-                  onChange={event => setUser(event.target.value)}
-                  value={user}
-               />
-               <Input
-                  type="password"
-                  placeholder="Senha"
-                  onChange={event => setPass(event.target.value)}
-                  value={pass}
-               />
-               <ButtonSubmit>
-                  Cadastro
-               </ButtonSubmit>
-            </form>
+         <form onSubmit={register} className={styles.form}>
+            <Input
+               type="text"
+               placeholder="Nome"
+               onChange={event => setName(event.target.value)}
+               value={name}
+            />
+            <Input
+               type="email"
+               placeholder="E-mail"
+               onChange={event => setEmail(event.target.value)}
+               value={email}
+            />
+            <Input
+               type="text"
+               placeholder="Usuário"
+               onChange={event => setUser(event.target.value)}
+               value={user}
+            />
+            <Input
+               type="password"
+               placeholder="Senha"
+               onChange={event => setPass(event.target.value)}
+               value={pass}
+            />
+            <ButtonSubmit>
+               Cadastro
+            </ButtonSubmit>
+         </form>
 
-         </Main>
       </Page>
    )
 }
